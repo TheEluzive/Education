@@ -2,14 +2,9 @@ package Introduction;
 
 /*Задания к главе 1
         Вариант A
+        */
 
-
-
-        4. Ввести пароль из командной строки и сравнить его со строкой-образцом.
-        5. Ввести целые числа как аргументы командной строки, подсчитать их суммы (произведения) и вывести результат на консоль.
-        6. Вывести фамилию разработчика, дату и время получения задания, а также
-        дату и время сдачи задания.*/
-
+import java.sql.Time;
 import java.util.Scanner;
 
 public class VarA {
@@ -17,15 +12,12 @@ public class VarA {
     private static final Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
-
         first();
         second(args);
         third();
-
-
-
-
-
+        fourth();
+        fifth();
+        sixth();
     }
 
     //1. Приветствовать любого пользователя при вводе его имени через командную строку.
@@ -81,16 +73,64 @@ public class VarA {
     //        на новую строку.
     public static void third(){
         int amount = 0;
-        System.out.print("Введите количество случайных чисел");
+        System.out.print("Введите количество случайных чисел: ");
         try{
             amount = scanner.nextInt();
         }
         catch (Exception exception){
             System.out.println(exception.fillInStackTrace().toString());
+            System.out.println("Введенные данные некорректны");
         }
 
-        for (int i=0; i<amount;){
-
+        StringBuilder resultInOneLine = new StringBuilder();
+        int[] numbers = new int[amount];
+        for (int i=0; i<amount;i++){
+            numbers[i] = (int) (Math.random()*10);
+            resultInOneLine.append(Integer.toString(numbers[i]));
+            System.out.println(numbers[i]);
         }
+
+        System.out.println("Вывод без перехода на новую строку:");
+
+        /*for (int i=0; i<amount;i++){
+            System.out.print(numbers[i]);
+        }*/
+        System.out.println(resultInOneLine);//такая реализации менее затратная
+        System.out.println("\n/////////////");
+    }
+
+    //4. Ввести пароль из командной строки и сравнить его со строкой-образцом.
+    public static void fourth(){
+        System.out.println("Введите - АБВГД");
+        String str = scanner.next();
+        String strExample = "АБВГД";
+        if (str.equals(strExample))
+            System.out.println("Введенная строка совпадает со строкой образцом АБВГД");
+        else
+            System.out.println("Введенная строка НЕ совпадает со строкой образцом АБВГД");
+
+    }
+
+     //5. Ввести целые числа как аргументы командной строки,
+     // подсчитать их суммы (произведения) и вывести результат на консоль.
+    public static void fifth(){
+        try {
+            System.out.println("Введите первое число: ");
+            int number1 = scanner.nextInt();
+            System.out.println("Введите второго число: ");
+            int number2 = scanner.nextInt();
+            System.out.println("Сумма этих чисел: " + Integer.toString(number1 + number2));
+        }
+        catch (Exception exception){
+            System.out.println(exception.fillInStackTrace().toString());
+            System.out.println("Ошибка ввода данных");
+        }
+
+    }
+    //6. Вывести фамилию разработчика, дату и время получения задания, а также
+    //дату и время сдачи задания.
+    public static void sixth(){
+        System.out.println("Ткач Евгений Михайлович");
+        System.out.println("Начал 13/12/20 н.э, доделал 16/12/20 н.э. 2 подхода по 20-30 минут");
     }
 }
