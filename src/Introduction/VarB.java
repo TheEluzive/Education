@@ -1,6 +1,7 @@
 package Introduction;
 
 import java.util.LinkedList;
+import java.util.Scanner;
 
 public class VarB {
     static int[] numbers;
@@ -24,6 +25,9 @@ public class VarB {
         task9();
         fFibonachi(15);
         palindroms(50);
+
+        task14();
+        buildPascalTriangleForFirstPositiveNumber(1);
 
     }
 
@@ -273,5 +277,41 @@ public class VarB {
 
     public static String reverseString(String str) {
         return new StringBuilder(str).reverse().toString();
+    }
+
+    //14. Элементы, которые равны полусумме соседних элементоff
+    public static void task14(){
+        int[] arr = {1,2,3,4,5,6,4,2,1,10};
+        for (int i = 1; i < arr.length - 2; i++) {
+            if ((double)arr[i] == (arr[i-1] + arr[i + 1])/2.0)
+                System.out.println(arr[i]);
+        }
+    }
+
+    public static void task15(int m, int n) {
+        int[] arr = {1,2,3,4,5,6,4,2,1,10};
+        System.out.println();
+
+    }
+
+    public static void buildPascalTriangleForFirstPositiveNumber(
+            int n) {
+
+
+        System.out.print("Сколько строк треугольника Паскаля для числа "
+                + n + " отображать? ");
+        Scanner in = new Scanner(System.in);
+        int rows = in.nextInt();
+        for (int y = 0; y < rows; y++) {
+            int c = n;
+            for (int i = 0; i < rows - y; i++) {
+                System.out.print("   ");
+            }
+            for (int x = 0; x <= y; x++) {
+                System.out.print("   " + c + " ");
+                c = c * (y - x) / (x + 1);
+            }
+            System.out.println();
+        }
     }
 }
