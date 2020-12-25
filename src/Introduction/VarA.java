@@ -35,23 +35,25 @@ public class VarA {
         System.out.println("/////////////");
     }
 
-    public static String[] reverse(String[] string){
+    public static void reverse(String[] string){
         String tmp = "";
         for (int i = 0; i < string.length/2; i++) {
             tmp = string[i];
             string[i] = string[string.length - i - 1];
-            string[string.length - i - 1] = string[i];
+            string[string.length - i - 1] = tmp;
         }
-        return string;
+        //return string;
     }
 
     // 2. Отобразить в окне консоли аргументы командной строки в обратном
     //порядке.
     public static void second(String[] args){
+
+        //args = reverse(args);
         for (String arg : args) {
             System.out.println(arg);
         }
-        reverse(args);
+
 
         //2.1 Просто решение задачи с преобразованием в обратный массив
         String[] stringsToTurning = new String[10];
