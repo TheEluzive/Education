@@ -4,7 +4,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class StudentWrap extends HumanWrap {
-
+    enum Compare{
+        BIGGER,
+        BIGGER_OR_EQUAL,
+        SMALLER,
+        SMALLER_OR_EQUAL
+    }
 
     public ArrayList<Student> findByFaculty(String faculty) {
         ArrayList<Student> arrStudents = new ArrayList<>();
@@ -58,6 +63,49 @@ public class StudentWrap extends HumanWrap {
 
     public String stringConcatenation(String str1, int str2) {
         return str1 + str2;
+    }
+
+    public ArrayList<Student> findByAge(int age, Compare compare){
+        ArrayList<Student> students = new ArrayList<>();
+        for (Human iterator:
+             humanHashMap.values()) {
+            if (iterator instanceof Student) {
+                switch(compare){
+                    case BIGGER:
+                        if (iterator.getAge() > age)
+                            students.add((Student) iterator);
+                        break;
+                    case BIGGER_OR_EQUAL:
+                        if (iterator.getAge() >= age)
+                            students.add((Student) iterator);
+                        break;
+                    case SMALLER:
+                        if (iterator.getAge() < age)
+                            students.add((Student) iterator);
+                        break;
+                    case SMALLER_OR_EQUAL:
+                        if (iterator.getAge() <= age)
+                            students.add((Student) iterator);
+                        break;
+                }
+            }
+
+        }
+        return students;
+    }
+
+
+    public ArrayList<Student> findByGroup(String group){
+        ArrayList<Student> students = new ArrayList<>();
+        for (Human iterator:
+                humanHashMap.values()) {
+            if (iterator instanceof Student) {
+                if (((Student) iterator).getGroup().equals(group))
+                    students.add((Student) iterator);
+            }
+
+        }
+        return students;
     }
 
 

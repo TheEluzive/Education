@@ -1,7 +1,6 @@
 package Introduction.Vol3Objects;
 
 
-import javax.xml.crypto.Data;
 import java.util.*;
 
 public class App {
@@ -43,6 +42,10 @@ public class App {
                 System.out.println(hashMap.get(key));
                 System.out.println();
             }
+            System.out.println(((StudentWrap) studentWrap).findByAge(50, StudentWrap.Compare.SMALLER_OR_EQUAL));
+            System.out.println();
+            System.out.println(((StudentWrap) studentWrap).findByGroup("ГР-1245"));
+
         }
 
         ;
