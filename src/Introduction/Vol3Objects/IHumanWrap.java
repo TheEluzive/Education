@@ -8,4 +8,5 @@ public interface IHumanWrap {
     ArrayList<Human> findByName(String name);
     ArrayList<Human> findByAge(int age);
     ArrayList<Human> findByPhone(String phone);
+    void add(Human human);
 }

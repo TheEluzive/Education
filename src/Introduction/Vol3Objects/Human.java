@@ -13,6 +13,7 @@ public abstract class Human {
     protected Calendar birthday;
     protected String address;
     protected String phoneNumber;
+    protected int age;
 
     public long getId() {
         return id;
@@ -30,6 +31,7 @@ public abstract class Human {
         this.birthday = birthday;
         this.address = address;
         this.phoneNumber = phoneNumber;
+        this.age = calculateAge(birthday);
     }
 
     public Human(){}
@@ -100,6 +102,35 @@ public abstract class Human {
         this.phoneNumber = phoneNumber;
     }
 
+    public int getAge() {
+        return age;
+    }
+
+    public int calculateAge(Calendar dob){
+        int age = 0;
+        Calendar now = Calendar.getInstance();
+
+
+        if (dob.after(now)) {
+            throw new IllegalArgumentException("Can't be born in the future");
+        }
+        int year1 = now.get(Calendar.YEAR);
+        int year2 = dob.get(Calendar.YEAR);
+        age = year1 - year2;
+        int month1 = now.get(Calendar.MONTH);
+        int month2 = dob.get(Calendar.MONTH);
+        if (month2 > month1) {
+            age--;
+        } else if (month1 == month2) {
+            int day1 = now.get(Calendar.DAY_OF_MONTH);
+            int day2 = dob.get(Calendar.DAY_OF_MONTH);
+            if (day2 > day1) {
+                age--;
+            }
+        }
+        return age;
+    }
+
     @Override
     public String toString() {
         return "Human{" +
@@ -112,4 +143,6 @@ public abstract class Human {
                 ", phoneNumber='" + phoneNumber + '\'' +
                 '}';
     }
+
+
 }
